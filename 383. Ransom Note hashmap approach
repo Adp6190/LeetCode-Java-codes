@@ -1,0 +1,27 @@
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(int i=0;i<magazine.length();i++){               //iterating magazine
+            char c= magazine.charAt(i);
+
+       if(!hm.containsKey(c)){                  //if hashmap contains key increment count of key or
+            hm.put(c,1);                        //if key does not exist add key with value of 1
+        }else{
+            hm.put(c,hm.get(c)+1);
+        }
+        }
+        
+
+        for(int i=0;i<ransomNote.length();i++){        //iterating ransomnote
+            char d= ransomNote.charAt(i);
+          if(hm.containsKey(d) && hm.get(d)>0){             //if  map contains key(alphabet) of ransomNote and count of key 
+              hm.put(d,hm.get(d)-1);                        //is greater than 0  then reduce the size of value(count) by 1
+        
+        }
+        else {
+            return false;                        // returns false if ransomNote cannot be created with Magazine
+        }
+        }
+      return true;                                    // returns true if ransomNote can be created with Magazine
+    }
+}
