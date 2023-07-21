@@ -1,0 +1,15 @@
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+    
+    Set<ListNode>set1= new HashSet<>();
+    ListNode trav=head;
+    while(trav!=null){
+        if(!set1.contains(trav))
+            set1.add(trav);         //storing address of trav.. to store value do trav.val
+         else
+            return true;
+        trav=trav.next;       
+    }
+    return false;
+    }
+}
